@@ -62,7 +62,7 @@ stage.add_reference_to_stage(
 DynamicCuboid(
     prim_path="/World/random_cube", # The prim path of the cube in the USD stage
     name="fancy_cube", # The unique name used to retrieve the object from the scene later on
-    position=np.array([0, -0.25837, 0.04101]), # Using the current stage units which is in meters by default.
+    position=np.array([0.3, 0.3, 0.04101]), # Using the current stage units which is in meters by default.
     scale=np.array([0.0515, 0.0515, 0.0515]), # most arguments accept mainly numpy arrays.
     color=np.array([0, 0, 1.0]), # RGB channels, going from 0-1
     )
@@ -72,8 +72,8 @@ DynamicCuboid(
 prims.create_prim(
     FRANKA_STAGE_PATH,
     "Xform",
-    position=np.array([0, -0.64, 0]),
-    orientation=rotations.gf_rotation_to_np_array(Gf.Rotation(Gf.Vec3d(0, 0, 1), 90)),
+    position=np.array([0, 0, 0.01601]),
+    orientation=rotations.gf_rotation_to_np_array(Gf.Rotation(Gf.Vec3d(0, 0, 1), 0)),
     usd_path=assets_root_path + FRANKA_USD_PATH,
 )
 
@@ -91,7 +91,7 @@ prims.create_prim(
 prims.create_prim(
     "/sugar_box",
     "Xform",
-    position=np.array([-0.07, -0.25, 0.1]),
+    position=np.array([-0.7, -0.25, 0.1]),
     orientation=rotations.gf_rotation_to_np_array(Gf.Rotation(Gf.Vec3d(0, 1, 0), -90)),
     usd_path=assets_root_path
     + "/Isaac/Props/YCB/Axis_Aligned_Physics/004_sugar_box.usd",
@@ -107,18 +107,12 @@ prims.create_prim(
 prims.create_prim(
     "/mustard_bottle",
     "Xform",
-    position=np.array([0.0, 0.15, 0.12]),
+    position=np.array([-1, 0.25, 0.12]),
     orientation=rotations.gf_rotation_to_np_array(Gf.Rotation(Gf.Vec3d(1, 0, 0), -90)),
     usd_path=assets_root_path
     + "/Isaac/Props/YCB/Axis_Aligned_Physics/006_mustard_bottle.usd",
 )
 
-prims.create_prim(
-    prim_path="/World/Cube",
-    prim_type="Cube",
-    position=np.array([0.2532,-0.35107, 0.05]),
-    attributes={"size": 0.05},
-)
 
 simulation_app.update()
 
